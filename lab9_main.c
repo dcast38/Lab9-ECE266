@@ -3,7 +3,7 @@
  * Note: In this semester, a small part of starter code is provided
  * (none was provided before).
  *
- * Lab 8: Distance Measurement
+ * Lab 9: Distance Measurement
  *
  * Created by David Castro
  * Last update: fall 2025
@@ -74,7 +74,7 @@ void TriggerRangerReading(Event *event){
 
 
 // read the distance so we can measure it for the buzzer
-float read_distance_mm()
+float read_distance()
 {
     static float last_distance = 1066.8f;   // default max distance
     uint32_t pulse;
@@ -101,7 +101,7 @@ void PlaySound(Event *event){
 
     int delay;
     delay = 0;
-    float d = read_distance_mm();
+    float d = read_distance();
 
     if(d >= 1066.8f){   // far
         BuzzerOff();
@@ -175,3 +175,4 @@ void main(void)
         EventExecute();
     }
 }
+
