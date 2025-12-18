@@ -1,10 +1,3 @@
-;
-; clockupdate.asm: ECE 266 Lab 3 Starter code, fall 2024
-;
-; Assembly code for updating the 7-seg to show a running clock.
-;
-; Created by Zhao Zhang
-;
 
 ; include C header file
         .cdecls "clock.h"
@@ -91,4 +84,5 @@ update_seg7_and_return
 
         POP     {PC}                ; return
         .end
+
 
