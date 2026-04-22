@@ -206,6 +206,19 @@ void PlaySound(Event *event)
     EventSchedule(event, event->time + delay);
 }
 
+Seg7Display seg7 = {{0,0,0,0}, false};
+int band = 0;
+
+uint8_t Seg7Digit(uint8_t n)
+{
+    static const uint8_t seg7_code[10] = {
+        0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F
+    };
+    if (n < 10)
+        return seg7_code[n];
+    return 0;
+}
+
 /*******************************************
  * The main function
  ******************************************/
