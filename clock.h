@@ -1,15 +1,15 @@
-#ifndef CLOCK_H_
-#define CLOCK_H_
 
+#ifndef CLOCKUPDATE_H_
+#define CLOCKUPDATE_H_
+
+#include <stdint.h>
 #include "launchpad.h"
 #include "seg7.h"
 
-// Declare global variable seg7
 extern Seg7Display seg7;
 extern uint32_t display_distance_mm;
 
-// Display the current band name on the 7-segment display
 void ClockUpdate(Event *event);
 
-#endif /* CLOCK_H_ */
+#endif /* CLOCKUPDATE_H_ */
 
