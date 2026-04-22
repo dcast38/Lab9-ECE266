@@ -1,16 +1,33 @@
+;
+; clockupdate.asm: ECE 266 Lab 3 Starter code, fall 2024
+;
+; Assembly code for updating the 7-seg to show a running clock.
+;
+; Created by Zhao Zhang
+;
 
 ; include C header file
-        .cdecls "clock.h"
+        .cdecls "clockupdate.h"
         .text
 
 ; Declaration fields (pointers) to seg7 and ClockUpdate
 _seg7           .field  seg7
 _ClockUpdate    .field  ClockUpdate
 _display_distance_mm    .field  display_distance_mm
-
+;************************************************************************************
+; Task 1: Update the clock
+;
+; C prototype: void ClockUpdate(uint32_t time)
+;
+; This is the ClockUpdate callback function in assembly. It replaces the
+; same function in your lab2_main.c.
+;
+; This is the STARTER CODE. At this time it only flashes the colon of the 7-seg.
+; Complete the code so that it updates all the four clock digits.
+;************************************************************************************
         .global ClockUpdate
         .asmfunc
-ClockUpdate
+ClockUpdate     
         PUSH    {LR, r0}        	; push return address and event
 
         ; check seg7.colon_on and turn it on/off
@@ -26,8 +43,10 @@ turn_on_colon
         MOV     r1, #1              ; r1 = 1
         STRB    r1, [r0, #4]        ; store 1 to seg7.colon_on
 
+        ;**************************************************************
+        ; YOUR CODE STARTS HERE
+        ;**************************************************************
         ; seg7.digit[0]
-
 update_digits
         ; r0 currently holds &seg7
 
@@ -70,6 +89,13 @@ update_digits
         B       update_seg7_and_return
 
 
+
+
+
+        ;**************************************************************
+        ; YOUR CODE ENDS HERE
+        ;**************************************************************
+
 update_seg7_and_return
         ; Physically update the 7-seg
         ;    Call Seg7Update(&seg)
@@ -84,5 +110,3 @@ update_seg7_and_return
 
         POP     {PC}                ; return
         .end
-
-
